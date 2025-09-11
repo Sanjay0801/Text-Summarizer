@@ -22,10 +22,7 @@ class DataIngestion:
 
     def extract_zip_file(self):
         unzip_path = self.config.unzip_dir
-        if not os.path.exists(unzip_path):
-            os.makedirs(unzip_path, exist_ok=True)
-            with zipfile.ZipFile(self.config.local_data_file, "r") as zip_ref:
-                zip_ref.extractall(unzip_path)
-            logger.info(f"File extracted to {unzip_path}")
-        else:
-            logger.info(f"File already exists at {unzip_path}")
+        os.makedirs(unzip_path, exist_ok=True)
+        with zipfile.ZipFile(self.config.local_data_file, 'r') as zip_ref:
+            zip_ref.extractall(unzip_path)
+            
